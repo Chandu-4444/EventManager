@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Create Event{% endblock %}
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<label>Title</label>
+	<br>
+	<input type="text" name="title">
+	<br>
+	<label>Description</label>
+	<br>
+	<textarea name="description"></textarea>
+	<br>
+	<label>Image</label>
+	<br>
+	<input type="file" name="image">
+	<br>
+	<label>Date</label>
+	<br>
+	<input type="date" name="date">
+	<br>
+	<label>Time</label>
+	<br>
+	<input type="time" name="time">
+	<br>
+	<label>Location</label>
+	<br>
+	<input type="text" name="location">
+	<br>
+	<input type="submit" value="Create Event!">
+</form>
+
+
+
+
+
+{% endblock %}
