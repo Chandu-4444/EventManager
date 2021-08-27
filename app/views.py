@@ -8,7 +8,7 @@ from .models import *
 
 
 def home(request):
-    events = Event.objects.all()
+    events = Event.objects.all().order_by('date', 'time')
     print(request.user.username)
     liked_events = []
 
@@ -19,7 +19,7 @@ def home(request):
         for liked_event in liked:
             liked_events.append(liked_event.id)
         print(liked_events)
-    return render(request, 'app/home.html', {'events': events, 'liked': liked_events})
+    return render(request, 'app/home.html', {'events': events, 'liked': liked_events, 'message': 'All Events'})
 
 
 def login_view(request):
@@ -106,7 +106,8 @@ def liked_events(request):
     for event in liked:
         liked_events.append(event.id)
     print(liked, liked_events)
-    return render(request, 'app/home.html', {'events': liked, 'liked': liked_events})
+
+    return render(request, 'app/home.html', {'events': liked, 'liked': liked_events, 'message': 'Liked Events'})
 
 
 def clicked(request):
